@@ -173,8 +173,8 @@ class MarketHistoryChart {
   constructor (el, availableSupply, _marketHistoryData, dataConfig) {
     const axes = config.options.scales
 
-    let priceActivated = true
-    let marketCapActivated = true
+    let priceActivated = false
+    let marketCapActivated = false
 
     this.price = {
       label: window.localized.Price,
