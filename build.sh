@@ -20,4 +20,7 @@ cd apps/explorer && npm install; cd -
 mix phx.digest
 
 # Build the release and overwrite the existing release directory
-MIX_ENV=prod mix release --overwrite
+cd apps/block_scout_web && MIX_ENV=prod mix release --overwrite; cd -
+cd apps/ethereum_jsonrpc && MIX_ENV=prod mix release --overwrite; cd -
+cd apps/explorer && MIX_ENV=prod mix release --overwrite; cd -
+cd apps/indexer && MIX_ENV=prod mix release --overwrite; cd -
