@@ -18,6 +18,11 @@ if(unset_vars.length > 0) {
     process.exit(1)
 }
 
+// Remove links to other chains that are there by default
+if(!process.env.SUPPORTED_CHAINS) {
+    process.env.SUPPORTED_CHAINS = "[]"
+}
+
 let apps = [
     {
         name: "Blockscout",
