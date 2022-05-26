@@ -1,31 +1,17 @@
+
 // PM2 ecosystem file
 
 let apps = [
-  {
-    name   : "block_scout_web",
-    script : "cd apps/block_scout_web && PORT=4000 MIX_ENV=prod mix phx.server"
-  },
-  {
-    name   : "ethereum_jsonrpc",
-    script : "_build/prod/rel/ethereum_jsonrpc/bin/ethereum_jsonrpc start"
-  },
-  {
-    name   : "explorer",
-    script : "_build/prod/rel/explorer/bin/explorer start"
-  },
-  {
-    name   : "Caddy reverse proxy",
-    script : "echo TODO"
-  }
+    {
+        name: "Blockscout",
+        script: "MIX_ENV=prod PORT=4000 mix phx.server"
+    },
+    {
+        name: "Caddy reverse-proxy",
+        script: "sudo caddy reverse-proxy --from l1-explorer.constellationchain.xyz --to 127.0.0.1:4000"
+    }
 ]
 
-if (process.env.DISABLE_INDEXER !== "true") {
-  apps.push({
-    name: "indexer",
-    script: "_build/prod/rel/indexer/bin/indexer start"
-  })
-}
-
 module.exports = {
-  apps
+    apps
 }
