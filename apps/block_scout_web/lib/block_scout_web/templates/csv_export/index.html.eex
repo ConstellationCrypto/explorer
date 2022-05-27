@@ -31,7 +31,7 @@
     var onloadCallback = function() {
       widgetId1 = grecaptcha.render('recaptcha', {
         'sitekey': '<%= Application.get_env(:block_scout_web, :re_captcha_client_key) %>',
-        'theme': localStorage.getItem('current-color-mode')
+        'theme': localStorage.getItem('current-color-mode') || 'dark'
       })
     }
   </script>
