@@ -165,7 +165,7 @@ $dark-stakes-banned-background: #3e314c;
 		border-top-color: $dark-light;
 		border-bottom-color: $dark-light;
 		border-right-color: $dark-light;
-		background-color: $dark-light;
+		background-color: $dark-light-bg;
 		color: $labels-dark;
 		&:not([class^="tile tile-type"]) {
 			border-left-color: $dark-light;
@@ -363,7 +363,7 @@ $dark-stakes-banned-background: #3e314c;
 
 	// api's
 	.api-anchors-list {
-		background-color: $dark-light;
+		background-color: $dark-light-bg;
 	}
 	.api-doc-list-item {
 		border-bottom-color: darken($labels-dark, 30);
