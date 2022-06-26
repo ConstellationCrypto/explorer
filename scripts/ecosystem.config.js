@@ -1,5 +1,9 @@
 // PM2 ecosystem file
 
+const { BLOCKSCOUT_PROCESS_NAME } = require("./config.js")
+
+console.log(BLOCKSCOUT_PROCESS_NAME)
+
 // Verify environment variables are set
 const required_vars = [
     "DATABASE_URL",
@@ -25,8 +29,14 @@ if(!process.env.SUPPORTED_CHAINS) {
 
 let apps = [
     {
-        name: "Blockscout",
-        script: "MIX_ENV=prod PORT=4000 mix phx.server"
+        name: BLOCKSCOUT_PROCESS_NAME,
+        script: "MIX_ENV=prod PORT=4000 mix phx.server",
+        cwd: "../"
+    },
+    {
+        name: "scout-monitor",
+        script: "monitor.js",
+        cwd: "./"
     },
     {
         name: "Caddy reverse-proxy",

@@ -1,0 +1,14 @@
+{
+  "name": "blockscout-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for managing blockscout deployment",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
