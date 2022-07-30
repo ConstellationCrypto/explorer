@@ -65,18 +65,18 @@ if ($('[data-page="address-logs"]').length) {
 
   store.dispatch({
     type: 'PAGE_LOAD',
-    addressHash: addressHash
+    addressHash
   })
 
   $element.on('click', '[data-search-button]', (_event) => {
     store.dispatch({
       type: 'START_SEARCH',
-      addressHash: addressHash
+      addressHash
     })
     const topic = $('[data-search-field]').val()
     const addressHashPlain = store.getState().addressHash
     const addressHashChecksum = addressHashPlain && utils.toChecksumAddress(addressHashPlain)
-    const path = '/search-logs?topic=' + topic + '&address_id=' + addressHashChecksum
+    const path = `${process.env.NETWORK_PATH}/search-logs?topic=${topic}&address_id=${addressHashChecksum}`
     store.dispatch({ type: 'START_REQUEST' })
     $.getJSON(path, { type: 'JSON' })
       .done(response => store.dispatch(Object.assign({ type: 'ITEMS_FETCHED' }, humps.camelizeKeys(response))))

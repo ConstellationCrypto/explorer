@@ -52,6 +52,16 @@ if ($transactionDetailsPage.length) {
   const store = createStore(reducer)
   connectElements({ store, elements })
 
+  const pathParts = window.location.pathname.split('/')
+  const shouldScroll = pathParts.includes('internal-transactions') ||
+  pathParts.includes('token-transfers') ||
+  pathParts.includes('logs') ||
+  pathParts.includes('token-transfers') ||
+  pathParts.includes('raw-trace')
+  if (shouldScroll) {
+    document.getElementById('transaction-tabs').scrollIntoView()
+  }
+
   const blocksChannel = socket.channel('blocks:new_block', {})
   blocksChannel.join()
   blocksChannel.on('new_block', (msg) => store.dispatch({
@@ -92,7 +102,7 @@ if ($transactionDetailsPage.length) {
           params: [txParams]
         })
           .then(function (txHash) {
-            const successMsg = `<a href="/tx/${txHash}">Canceling transaction</a> successfully sent to the network. The current one will change the status once canceling transaction will be confirmed.`
+            const successMsg = `<a href="${process.env.NETWORK_PATH}/tx/${txHash}">Canceling transaction</a> successfully sent to the network. The current one will change the status once canceling transaction will be confirmed.`
             Swal.fire({
               title: 'Success',
               html: successMsg,

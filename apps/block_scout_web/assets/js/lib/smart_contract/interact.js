@@ -7,7 +7,7 @@ export const queryMethod = (isWalletEnabled, url, $methodId, args, type, functio
   const data = {
     function_name: functionName,
     method_id: $methodId.val(),
-    type: type
+    type
   }
 
   data.args_count = args.length
@@ -97,7 +97,7 @@ function onTransactionHash (txHash, $element, functionName) {
     })
       .then(txReceipt => {
         if (txReceipt) {
-          const successMsg = `Successfully sent <a href="/tx/${txHash}">transaction</a> for method "${functionName}"`
+          const successMsg = `Successfully sent <a href="${process.env.NETWORK_PATH}/tx/${txHash}">transaction</a> for method "${functionName}"`
           openSuccessModal('Success', successMsg)
           clearInterval(txReceiptPollingIntervalId)
         }
