@@ -51,6 +51,10 @@ defmodule BlockScoutWeb.LayoutView do
     Keyword.get(application_config(), :subnetwork) || "Sokol"
   end
 
+  def coin_title do
+    Keyword.get(application_config(), :coin) || "ETH"
+  end
+
   def network_title do
     Keyword.get(application_config(), :network) || "POA"
   end
